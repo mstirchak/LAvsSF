@@ -1,7 +1,10 @@
-//Width and height
+			//Width and height
 			var w = 918;
 			var h = 800;
 
+            document.write('<button id="Population" onclick="pop();">Population</button>');
+            document.write('<button id="Housing Prices" onclick="Prices();">Housing Prices</button>');
+            document.write('<button id="Income" onclick="Income();">Income</button>');
 
             var projection = d3.geo.mercator()
                .center([-122.433701, 37.767683])
@@ -27,11 +30,9 @@
 				   .enter()
 				   .append("path")
 				   .attr("d", path)
-                   .style("fill", "steelblue");
-                   console.log(json.features);
+                   .style("fill", "steelblue")
 		
 			});
-
 
 
           var LAprojection = d3.geo.mercator()
@@ -61,6 +62,30 @@
 		
 			});
 
+            function pop() {
+                d3.json("SanFrancisco.json", function(json) {
+				svg.selectAll("path")
+                   .style("fill", "black")
+			});
+            }
+                
+            function Income() {
+                d3.json("SanFrancisco.json", function(json) {
+				svg.selectAll("path")
+                   .style("fill", "green")
+			});
+            }
+                
+            function Prices() {
+                d3.json("SanFrancisco.json", function(json) {
+				svg.selectAll("path")
+                   .style("fill", "orange")
+			});
+                
+            }
+                    
 
 
+
+		
 		
